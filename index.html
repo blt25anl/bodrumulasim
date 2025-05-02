@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zafer Korsan Taksi</title>
+    <style>
+        /* Sayfanın temel görünüm ve yazı tipi ayarları */
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #fff;
+            color: #333;
+        }
+    
+        /* Üstteki header alanı (başlık ve butonlar için) */
+        header {
+            background-color: #f1c40f; /* Sarı arka plan */
+            color: #000;
+            padding: 1rem 2rem;
+            display: flex;
+            flex-wrap: wrap; /* Mobilde alt satıra geçmesini sağlar */
+            align-items: center;
+            justify-content: space-between;
+        }
+    
+        /* Sol üstteki başlık: ikon ve yazı */
+        .header-title {
+            font-size: 1.5rem;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+    
+        /* Sağ üstteki butonların düzeni */
+        .contact-buttons {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap; /* Butonlar dar ekranda alt alta geçebilir */
+            margin-top: 10px;
+        }
+    
+        /* Arama ve WhatsApp butonları */
+        .contact-buttons a {
+            background-color: #000;
+            color: #fff;
+            text-decoration: none;
+            padding: 10px 16px;
+            border-radius: 4px;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            transition: background-color 0.3s ease;
+            font-size: 0.9rem;
+        }
+    
+        /* Buton üzerine gelince ters renk efekti */
+        .contact-buttons a:hover {
+            background-color: #fff;
+            color: #000;
+            border: 1px solid #000;
+        }
+    
+        /* Giriş görseli (Hero Alanı) */
+        .hero {
+            background: url('Bodrum_Ulasim1.jpg') no-repeat center center/cover;
+            height: 1000px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            text-align: center;
+            padding: 0 1rem;
+            text-shadow: 2px 2px 5px #000; /* Yazıya gölge efekti */
+        }
+    
+        .hero h1 {
+            font-size: 5.5rem;
+            margin: 0;
+        }
+    
+        .hero p {
+            font-size: 1rem;
+            margin: 1rem 0;
+        }
+    
+        /* Hero alanındaki bağlantı butonu */
+        .hero a {
+            background-color: #f1c40f;
+            color: #000;
+            text-decoration: none;
+            padding: 12px 24px;
+            border-radius: 4px;
+            font-weight: bold;
+        }
+    
+        /* Özellik kutuları (3'lü bilgilendirme kutusu) */
+        .features {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 2rem;
+            text-align: center;
+            padding: 4rem 1rem;
+        }
+    
+        .feature {
+            flex: 1 1 250px; /* Genişlik: min 250px */
+            max-width: 300px; /* En fazla 300px olacak */
+        }
+    
+        .feature img {
+            height: 48px;
+            margin-bottom: 1rem;
+        }
+    
+        /* Alt "Bize Ulaşın" çağrısı (CTA alanı) */
+        .cta {
+            background-color: #f1c40f;
+            color: #000;
+            text-align: center;
+            padding: 2rem 1rem;
+        }
+    
+        .cta h2 {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+        }
+    
+        /* CTA içindeki butonlar */
+        .cta-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+    
+        .cta-buttons a {
+            background-color: #1e1e1e;
+            color: #fff;
+            padding: 10px 20px;
+            border-radius: 4px;
+            font-weight: bold;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+    
+        .cta-buttons a:hover {
+            background-color: #000;
+        }
+    
+        /* Sayfa altı (footer) alanı */
+           footer {
+        background-color: #2d2d2d;
+        color: #fff;
+        text-align: center;
+        padding: 1rem 0;
+        font-size: 0.9rem;
+        overflow: hidden;
+        position: relative;
+    }
+
+    .kayan-yazi {
+        display: inline-block;
+        white-space: nowrap;
+        position: absolute;
+        will-change: transform;
+        animation: kayanYazi 10s linear infinite;
+    }
+
+    @keyframes kayanYazi {
+        0% {
+            transform: translateX(100%);
+        }
+        100% {
+            transform: translateX(-100%);
+        }
+    }
+    
+        /* Sağ alt köşedeki sabit WhatsApp butonu */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 55px;
+            height: 55px;
+            z-index: 1000;
+        }
+    
+        .whatsapp-float img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+    
+        /* Mobil uyum (responsive) için medya sorgusu */
+        @media screen and (max-width: 1000px) {
+            /* Hero başlığı mobilde daha küçük */
+            .hero h1 {
+                font-size: 2rem;
+            }
+    
+            .hero p {
+                font-size: 0.9rem;
+            }
+    
+            /* Özellik kutuları alt alta dizilir */
+            .feature {
+                flex: 1 1 100%;
+            }
+    
+            /* Header başlığı mobilde ortalanır */
+            .header-title {
+                font-size: 1.2rem;
+                flex: 1 1 100%;
+                justify-content: center;
+                margin-bottom: 10px;
+            }
+    
+            /* Butonlar ortalanır */
+            .contact-buttons {
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- HEADER alanı -->
+    <header>
+        <div class="header-title">
+            <span style="font-size: 1.6rem;"></span>
+            <span>Bodrum Korsan Taksi</span>
+        </div>
+
+        <div class="contact-buttons">
+            <a href="tel:+905313310342">📞 Arayın</a>
+            <a href="https://wa.me/905313310342">💬 Whatsapp</a>
+        </div>
+    </header>
+
+    <!-- Giriş görseli ve çağrı -->
+    <div class="hero">
+        <h1>Hemen Arayın!</h1>
+        <p>Üst model, klimalı araçlardan oluşan filomuzla konforlu bir yolculuk.</p>
+        <a href="https://wa.me/905313310342">📞 Bize Ulaşın</a>
+    </div>
+
+    <!-- Üçlü bilgi kutuları -->
+    <div class="features">
+        <div class="feature">
+            <img src="https://img.icons8.com/ios/50/speed.png" alt="Hızlı Servis" />
+            <h3>Hızlı Servis</h3>
+            <p>Farklı bölgelerdeki hizmet noktalarımız sayesinde minimum bekleme.</p>
+        </div>
+        <div class="feature">
+            <img src="https://img.icons8.com/ios/50/money.png" alt="Uygun Fiyat" />
+            <h3>Uygun Fiyat</h3>
+            <p>Diğer ulaşım alternatiflerine göre adil, hesaplı ulaşım imkanı.</p>
+        </div>
+        <div class="feature">
+            <img src="https://img.icons8.com/ios/50/car--v1.png" alt="Konforlu Yolculuk" />
+            <h3>Konforlu Yolculuk</h3>
+            <p>Tecrübeli Personel alımımız devam etmektedir.</p>
+        </div>
+    </div>
+
+    <!-- Alt CTA (bize ulaşın butonları) -->
+    <div class="cta">
+        <h2>Bize Ulaşın</h2>
+        <div class="cta-buttons">
+            <a href="tel:+905313310342">📞 Ara</a>
+            <a href="https://wa.me/905313310342">💬 Whatsapp</a>
+        </div>
+    </div>
+
+    <!-- ALT BİLGİ -->
+    <footer>
+        <div class="kayan-yazi">© 2025 Tüm hakları saklıdır.</div>
+    </footer>
+
+    <!-- SABİT WHATSAPP İKONU (GÖRSELLE) -->
+    <a href="https://wa.me/905313310342" class="whatsapp-float" target="_blank">
+        <img src="whatsappicon.webp" alt="WhatsApp">
+    </a>
+</body>
+</html>
